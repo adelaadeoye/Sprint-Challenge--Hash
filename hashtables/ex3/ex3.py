@@ -1,3 +1,5 @@
+import collections
+
 def intersection(arrays):
 
     """
@@ -7,12 +9,10 @@ def intersection(arrays):
     result=[]
     for element in range(len(arrays)):
         cache[element]=arrays[element]
-    # print(cache)
     for i in range(len(cache)):
-        result.append(cache[i])
-    return list(result)
-
-
+        result+=(cache[i])
+    result=[item for item, count in collections.Counter(result).items() if count > 1]
+    return(result)
 if __name__ == "__main__":
     arrays = []
 
